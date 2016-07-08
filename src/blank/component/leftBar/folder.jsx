@@ -19,7 +19,7 @@ class Folder extends React.Component {
 
   render() {
     return  <div className="folder">
-              <span onClick={this.handleClick.bind(this)}>{this.props.folder.title}</span>
+              <span className="folderTitle overflow_ellipsi" onClick={this.handleClick.bind(this)}>{this.props.folder.title}</span>
               {this.state.folderChildren}
             </div>
   }

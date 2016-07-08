@@ -1,0 +1,44 @@
+.leftBar {
+    position: fixed;
+    cursor: pointer;
+    height: 100%;
+    padding-top: 40px;
+    padding-left: 20px;
+}
+
+/* 文件夹 */
+.folderBox {
+    width: 200px;
+    overflow-y: auto;
+}
+.folderBox>.folder {
+    margin-bottom: 8px;
+}
+.folder>.folder {
+    padding-left: 20px;
+}
+.folder>.folder>.folder {
+    padding-left: 40px;
+}
+.folder .folderTitle {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    background: #1e88e5;
+    color: #fff;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* 书签 */
+.bookmarkBox {
+    position: absolute;
+    left: 250px;
+    top: 0;
+    height: 100%;
+}
+.bookmarkBox .bookmark {
+    
+}

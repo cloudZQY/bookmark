@@ -1,5 +1,4 @@
 import React from 'react';
-import Bookmark from './bookmark.jsx';
 
 export default class extends React.Component {
   constructor(props) {
@@ -8,8 +7,8 @@ export default class extends React.Component {
 
   render() {
     let bookmarks = this.props.bookmarks.map(
-      (bookmark, key) => <li className="bookmark" key={key}>{bookmark.title}</li>
+      (bookmark, key) => <li className="bookmark overflow_ellipsis" key={key}><a href={bookmark.url}>{bookmark.title}</a></li>
     );
-    return <ul>{bookmarks}</ul>
+    return <ul className="bookmarkBox">{bookmarks}</ul>
   }
 }
