@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server -d --watch --devtool --inline --hot"
   },
   "author": "Cloudzqy",
   "license": "ISC",
@@ -24,5 +24,9 @@
     "react-router": "2.x",
     "style-loader": "~0.12.3",
     "url-loader": "~0.5.6"
+  },
+  "devDependencies": {
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0"
   }
 }

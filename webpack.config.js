@@ -1,12 +1,20 @@
 module.exports = {
     entry: {
-        'blank': './src/blank/index.jsx',
-        'popup': './src/popup',
+        'blank': './src/blank',
     },
     output: {
         path: './bookmark/js',
         filename: '[name].js',
         chunkFilename: '[name].chunk.js',
+    },
+    resolve: {
+        alias: {
+            'util': 'src/blank/util',
+        },
+        modulesDirectories: [
+          '',
+          'node_modules'
+        ],
     },
     module: {
       loaders:[
@@ -14,5 +22,5 @@ module.exports = {
         { test: /\.css$/, loader: 'style-loader!css-loader' }
       ]
     },
-    devtool: 'source-map',
+    devtool: '#cheap-eval-source-map',
 };

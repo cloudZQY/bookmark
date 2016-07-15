@@ -1,7 +1,8 @@
 import React from 'react';
-import FolderList from './folderList.jsx';
-import BookmarkList from './bookmarkList.jsx';
+import FolderList from './folderList';
+import BookmarkList from './bookmarkList';
 import './leftBar.css';
+import { getFolder } from '../../actions';
 
 
 export default class extends React.Component {
