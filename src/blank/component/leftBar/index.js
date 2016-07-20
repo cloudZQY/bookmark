@@ -17,7 +17,6 @@ export default class extends React.Component {
   }
 
   changeFolder(children) {
-    console.log(children);
     this.setState({
       bookmarks: children.map(function(child, key) {
         return child.children ? '' : child;

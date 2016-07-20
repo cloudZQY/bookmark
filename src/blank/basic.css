@@ -9,9 +9,14 @@ body,html,div,ul,li {
 ul li {
     list-style: none;
 }
+a,a:hover,a:visited {
+    text-decoration: none;
+    color: #333;
+}
 .overflow_ellipsis {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+

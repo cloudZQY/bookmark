@@ -1,24 +1,26 @@
 import { combineReducers } from 'redux';
+import { getFolder } from 'util';
 
-const showedFolder = (state='', action) => {
+const showedBookmarks = (state=[], action) => {
   switch(action.type) {
     case 'CHANGE_FOLDER':
-      return action.id;
+      return action.bookmarks;
     default:
-      return '';
+      return state;
   }
 }
 
 const openedFolders = (state={}, action) => {
   switch(action.type) {
     case 'TOGGLE_FOLDER':
-      if (state[action]) {
-        state[action.id] = 0;
-      } else {
-        state[action.id] = 1;
-      }
-      return state
-    default:
+      return Object.assign({}, state, {
+          [action.id]: !state[action.id]
+        })
+    case 'OPEN_FOLDER':
+      return Object.assign({}, state, {
+          [action.id]: true
+        });
+    default: 
       return state;
   }
 }
@@ -32,25 +34,22 @@ const bookmarks = (state=[], action) => {
   }
 }
 
-function getFolder(list, id) {
-  var getResult = list => list.find((item) => item.id === id);
-  var loopChildren = list => {
-    let result;
-    if (result = getResult(list)) {
-      return result;
-    }
-    for (let i = 0; i < list.length; i++) {
-      if (list[i].children && (result = loopChildren(list[i].children))) {
-        return result;
-      }
-    }
+const choosedFolder = (state='', action) => {
+  switch(action.type) {
+    case 'OPEN_FOLDER':
+      return action.id;
+    case 'TOGGLE_FOLDER':
+      return action.id;
+    default:
+      return state;
   }
-  return loopChildren(list);
 }
 
 
+
 export default combineReducers({
-  showedFolder,
+  showedBookmarks,
+  choosedFolder,
   openedFolders,
   bookmarks,
 })

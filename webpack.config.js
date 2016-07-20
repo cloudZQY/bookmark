@@ -1,3 +1,6 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
 module.exports = {
     entry: {
         'blank': './src/blank',
@@ -7,6 +10,9 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '[name].chunk.js',
     },
+    plugins: [
+        new ExtractTextPlugin("styles.css"),
+    ],
     resolve: {
         alias: {
             'util': 'src/blank/util',
@@ -18,9 +24,9 @@ module.exports = {
     },
     module: {
       loaders:[
-        { test: /\.js[x]?$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
-        { test: /\.css$/, loader: 'style-loader!css-loader' }
+        {test: /\.js[x]?$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
+        {test:/\.css$/, loader: ExtractTextPlugin.extract("style-loader?sourceMap", "css-loader?sourceMap")},
       ]
     },
-    devtool: '#cheap-eval-source-map',
+    devtool: 'eval',
 };

@@ -6,43 +6,34 @@ import { toggleFolder, changeFolder } from '../actions';
 class FolderList extends React.Component {
   constructor(props) {
     super(props);
-
-    let { bookmarks, openedFolders } = props;
-    this.state = {
-      bookmarks,
-      openedFolders,
-      folders: bookmarks.map((folder, key) => {
-        return <Folder folder={folder} key={key} openedFolders={openedFolders} handleClick={this.handleClick.bind(this)}></Folder>
-      }),
-    }
-  }
-
-  handleClick(id) {
-    toggleFolder(id);
-    changeFolder(id);
-  }
-
-  componentWillReceiveProps() {
-    this.setState({
-      folders: this.state.bookmarks.map((folder, key) => {
-        return <Folder folder={folder} key={key} openedFolders={this.state.openedFolders} handleClick={this.handleClick.bind(this)}></Folder>
-      }),
-    })
   }
 
   render() {
+    const { bookmarks, openedFolders, choosedFolder, dispatch, handleMove } = this.props;
+    let folders = bookmarks.map((folder, key) => {
+        return (
+          <Folder 
+            folder={folder} 
+            key={key} 
+            openedFolders={openedFolders}
+            choosedFolder={choosedFolder} 
+            handleClick={id => {
+              this.props.dispatch(toggleFolder(id));
+              this.props.dispatch(changeFolder(id));
+            }} />
+        )
+    });
     return  <div className="folderBox">
-              {this.state.folders}
+              {folders}
             </div>
   }
 }
-
-
 
 const select = state => {
   return {
     bookmarks: state.bookmarks,
     openedFolders: state.openedFolders,
+    choosedFolder: state.choosedFolder,
   }
   
 }
