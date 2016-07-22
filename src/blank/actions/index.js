@@ -1,4 +1,5 @@
 import React from 'react';
+import { saveFolder, createDefaultMode } from 'util';
 
 export const changeFolder = id => dispatch =>{
   chrome.bookmarks.getChildren(id, children => {
@@ -41,4 +42,20 @@ export const refreshBookmarks = () => (dispatch) => {
       bookmarks
     })
   })
+}
+
+export const initModes = (bookmarks) => (dispatch) => {
+  createDefaultMode(bookmarks).then((bm) => {
+    dispatch(refreshBookmarks());
+    saveFolder(bm.id).then(modes => {
+      dispatch(refreshModes(modes));
+    })
+  })
+}
+
+export const refreshModes = modes => {
+  return {
+    type: 'REFRESH_MODES',
+    modes
+  }
 }

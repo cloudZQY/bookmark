@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { getFolder } from 'util';
+import async from 'async';
 
 const showedBookmarks = (state=[], action) => {
   switch(action.type) {
@@ -45,6 +46,15 @@ const choosedFolder = (state='', action) => {
   }
 }
 
+const modes = (state=[], action) => {
+  switch(action.type) {
+    case 'REFRESH_MODES':
+      return [].concat(action.modes);
+    default:
+      return state;
+  }
+}
+
 
 
 export default combineReducers({
@@ -52,4 +62,5 @@ export default combineReducers({
   choosedFolder,
   openedFolders,
   bookmarks,
+  modes,
 })

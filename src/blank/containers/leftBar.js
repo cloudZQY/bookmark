@@ -5,6 +5,8 @@ import '../component/leftBar/leftBar.css';
 import { refreshBookmarks, toggleFolder, changeFolder, openFolder, moveBookmark } from '../actions';
 import { connect } from 'react-redux';
 import { getFolder } from 'util';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 
 
 class LeftBar extends React.Component {
@@ -30,13 +32,17 @@ class LeftBar extends React.Component {
   }
 
   handleMove(id, distination) {
+    let { dispatch, choosedFolder} = this.props;
     chrome.bookmarks.move(id, distination);
-    this.props.dispatch(refreshBookmarks());
+    dispatch(refreshBookmarks());
+    dispatch(changeFolder(choosedFolder));
   }
 
   render() {
     return  <div className="leftBar" id="leftBar">
-              <FolderList />
+              <FolderList 
+              handleMove={this.handleMove.bind(this)}
+              />
               <BookmarkList 
               showedBookmarks={this.props.showedBookmarks}
               bookmarkClick={this.bookmarkClick.bind(this)}
@@ -51,6 +57,7 @@ export default connect(state => {
   return {
     showedBookmarks: state.showedBookmarks,
     bookmarks: state.bookmarks,
+    choosedFolder: state.choosedFolder,
   }
-})(LeftBar);
+})(DragDropContext(HTML5Backend)(LeftBar));
 

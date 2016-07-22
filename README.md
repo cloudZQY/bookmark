@@ -1,1 +1,3 @@
-# module_interpret
+
+$ npm install
+$ webpack

@@ -1,0 +1,17 @@
+.modeBar {
+    position: absolute;
+    right: 50px;
+    top:50px;
+}
+.modeBar .modeItem {
+    width:100px;
+    height:30px;
+    background: #15a230;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}

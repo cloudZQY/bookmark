@@ -20,7 +20,8 @@ class FolderList extends React.Component {
             handleClick={id => {
               this.props.dispatch(toggleFolder(id));
               this.props.dispatch(changeFolder(id));
-            }} />
+            }}
+            handleMove={handleMove} />
         )
     });
     return  <div className="folderBox">

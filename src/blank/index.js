@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import thunkMiddleware from 'redux-thunk';
 import LeftBar from './containers/leftBar';
+import ModeBar from './containers/modeBar';
 
 let store = createStore(
   reducers,
@@ -15,7 +16,11 @@ let store = createStore(
 );
 ReactDOM.render( 
   <Provider store={store}>
-    <LeftBar></LeftBar>
+    <div>
+      <LeftBar/>
+      <ModeBar/>
+    </div>
+    
   </Provider>
   
 , document.getElementById('main'))

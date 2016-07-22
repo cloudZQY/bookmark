@@ -1,7 +1,5 @@
 import React from 'react';
 import Bookmark from './bookmark';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
 
 class BookmarkList extends React.Component {
   constructor(props) {
@@ -30,4 +28,4 @@ class BookmarkList extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(BookmarkList);
+export default BookmarkList;
