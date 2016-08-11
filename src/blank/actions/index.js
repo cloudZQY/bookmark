@@ -50,6 +50,7 @@ export const initModes = (bookmarks) => (dispatch) => {
     saveFolder(bm.id).then(modes => {
       dispatch(refreshModes(modes));
     })
+    dispatch(saveCBM(bm));
   })
 }
 
@@ -57,5 +58,12 @@ export const refreshModes = modes => {
   return {
     type: 'REFRESH_MODES',
     modes
+  }
+}
+
+export const saveCBM = CBM => {
+  return {
+    type: 'SAVE_CBM',
+    CBM
   }
 }

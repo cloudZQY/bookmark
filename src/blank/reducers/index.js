@@ -55,6 +55,14 @@ const modes = (state=[], action) => {
   }
 }
 
+const CBM = (state={}, action) => {
+  switch(action.type) {
+    case 'SAVE_CBM':
+      return Object.assign({}, action.CBM);
+    default:
+      return state;
+  }
+}
 
 
 export default combineReducers({
@@ -63,4 +71,5 @@ export default combineReducers({
   openedFolders,
   bookmarks,
   modes,
+  CBM
 })

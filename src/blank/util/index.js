@@ -156,7 +156,7 @@ const copyFolderFromArray = (bookmarks,targetId) => {
   })
 }
 
-// 讲指定id的书签保存为一个数组
+// 讲指定id的文件夹书签保存为一个数组
 export const saveFolder = id => {
   return new Promise((resolve, reject) => {
     let bookmarks = [];
